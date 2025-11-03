@@ -1,6 +1,6 @@
 import 'package:caremixer_technical_assesment/views/chatbot_view.dart';
 import 'package:caremixer_technical_assesment/views/pokemon_view.dart';
-import 'package:caremixer_technical_assesment/views/timeline_view.dart';
+import 'package:caremixer_technical_assesment/views/timeline/timeline_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 
