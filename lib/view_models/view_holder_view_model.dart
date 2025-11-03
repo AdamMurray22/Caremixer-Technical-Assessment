@@ -4,10 +4,11 @@ import 'package:caremixer_technical_assesment/views/timeline_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 
-class ViewHolderViewModel
+class ViewHolderViewModel with ChangeNotifier
 {
   // links the nav bar items to the views
   final List<Tuple2<NavigationBarItem, Widget>> _itemsInOrder = [];
+  int _currentIndex = 0;
 
   ViewHolderViewModel()
   {
@@ -22,16 +23,10 @@ class ViewHolderViewModel
         ChatbotView()));
   }
 
-  int _selectedIndexBottomNavBar = 0;
-
-  /// Returns the selected index in the nav bar.
-  int getSelectedIndex() {
-    return _selectedIndexBottomNavBar;
-  }
-
-  /// Sets the selected index in the nav bar.
-  void setSelectedIndex(int index) {
-    _selectedIndexBottomNavBar = index;
+  int get currentIndex => _currentIndex;
+  set currentIndex(int index) {
+    _currentIndex = index;
+    notifyListeners();
   }
 
   /// Returns the enums in the order of the navigation bar.

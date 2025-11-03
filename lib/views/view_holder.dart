@@ -13,7 +13,6 @@ class ViewHolder extends StatefulWidget {
 }
 
 class _ViewHolderState extends State<ViewHolder> {
-
   late final ViewHolderViewModel _viewHolderViewModel;
 
   @override
@@ -24,20 +23,25 @@ class _ViewHolderState extends State<ViewHolder> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-          index: _viewHolderViewModel.getSelectedIndex(), children: _viewHolderViewModel.getViewsInOrder()),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: _addItemsToBottomNavigationBar(),
-        currentIndex: _viewHolderViewModel.getSelectedIndex(),
-        selectedItemColor: Colors.amber[800],
-        onTap: (index) {
-          setState(() {
-            _viewHolderViewModel.setSelectedIndex(index);
-          });
-        },
-      ),
+    return ListenableBuilder(
+      listenable: _viewHolderViewModel,
+      builder: (BuildContext context, Widget? child) {
+        return Scaffold(
+          body: IndexedStack(
+            index: _viewHolderViewModel.currentIndex,
+            children: _viewHolderViewModel.getViewsInOrder(),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: _addItemsToBottomNavigationBar(),
+            currentIndex: _viewHolderViewModel.currentIndex,
+            selectedItemColor: Colors.amber[800],
+            onTap: (index) {
+              _viewHolderViewModel.currentIndex = index;
+            },
+          ),
+        );
+      },
     );
   }
 
@@ -45,10 +49,9 @@ class _ViewHolderState extends State<ViewHolder> {
   List<BottomNavigationBarItem> _addItemsToBottomNavigationBar() {
     List<BottomNavigationBarItem> navBarItems = [];
     for (NavigationBarItem item in _viewHolderViewModel.getItemsInOrder()) {
-      navBarItems.add(BottomNavigationBarItem(
-        icon: item.icon,
-        label: item.label,
-      ));
+      navBarItems.add(
+        BottomNavigationBarItem(icon: item.icon, label: item.label),
+      );
     }
     return navBarItems;
   }

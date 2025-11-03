@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class ChatbotView extends StatefulWidget {
-  ChatbotView({super.key});
+  const ChatbotView({super.key});
 
 
   @override
@@ -20,7 +20,7 @@ class _ChatbotViewState extends State<ChatbotView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container()
+      body: Container(child: Text("Chatbot"),)
     );
   }
 }

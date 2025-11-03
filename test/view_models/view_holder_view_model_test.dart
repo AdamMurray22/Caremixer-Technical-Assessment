@@ -10,15 +10,15 @@ void main() {
   test('ViewHolderViewModel index should be initialised to 0', () {
     final viewHolderViewModel = ViewHolderViewModel();
 
-    expect(viewHolderViewModel.getSelectedIndex(), 0);
+    expect(viewHolderViewModel.currentIndex, 0);
   });
 
   test('ViewHolderViewModel index should be updated', () {
     final viewHolderViewModel = ViewHolderViewModel();
 
-    expect(viewHolderViewModel.getSelectedIndex(), 0);
-    viewHolderViewModel.setSelectedIndex(2);
-    expect(viewHolderViewModel.getSelectedIndex(), 2);
+    expect(viewHolderViewModel.currentIndex, 0);
+    viewHolderViewModel.currentIndex = 2;
+    expect(viewHolderViewModel.currentIndex, 2);
   });
 
   test('ViewHolderViewModel items should be in order', () {
