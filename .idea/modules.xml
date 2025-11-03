@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/caremixer_technical_assesment.iml" filepath="$PROJECT_DIR$/caremixer_technical_assesment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/caremixer_technical_assesment_android.iml" filepath="$PROJECT_DIR$/android/caremixer_technical_assesment_android.iml" />
     </modules>
   </component>
 </project>
