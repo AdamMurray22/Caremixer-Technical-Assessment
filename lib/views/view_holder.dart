@@ -3,23 +3,10 @@ import 'package:flutter/material.dart';
 import '../view_models/view_holder_view_model.dart';
 
 /// Contains the main navigation between the three tasks.
-class ViewHolder extends StatefulWidget {
+class ViewHolder extends StatelessWidget {
   ViewHolder({super.key});
 
-  final ViewHolderViewModel _viewHolderViewModel = ViewHolderViewModel();
-
-  @override
-  State<ViewHolder> createState() => _ViewHolderState();
-}
-
-class _ViewHolderState extends State<ViewHolder> {
-  late final ViewHolderViewModel _viewHolderViewModel;
-
-  @override
-  void initState() {
-    _viewHolderViewModel = widget._viewHolderViewModel;
-    super.initState();
-  }
+  late final ViewHolderViewModel _viewHolderViewModel = ViewHolderViewModel();
 
   @override
   Widget build(BuildContext context) {
