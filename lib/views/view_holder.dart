@@ -6,7 +6,7 @@ import '../view_models/view_holder_view_model.dart';
 class ViewHolder extends StatelessWidget {
   ViewHolder({super.key});
 
-  late final ViewHolderViewModel _viewHolderViewModel = ViewHolderViewModel();
+  final ViewHolderViewModel _viewHolderViewModel = ViewHolderViewModel();
 
   @override
   Widget build(BuildContext context) {
