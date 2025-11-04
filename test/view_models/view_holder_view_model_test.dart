@@ -1,6 +1,6 @@
 import 'package:caremixer_technical_assesment/view_models/view_holder_view_model.dart';
 import 'package:caremixer_technical_assesment/views/chatbot_view.dart';
-import 'package:caremixer_technical_assesment/views/pokemon_view.dart';
+import 'package:caremixer_technical_assesment/views/pokedex/pokedex_view.dart';
 import 'package:caremixer_technical_assesment/views/timeline/timeline_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:test/test.dart';
@@ -40,7 +40,7 @@ void main() {
 
 
     expect(itemsInOrder[0], isA<TimelineView>());
-    expect(itemsInOrder[1], isA<PokemonView>());
+    expect(itemsInOrder[1], isA<PokedexView>());
     expect(itemsInOrder[2], isA<ChatbotView>());
     expect(itemsInOrder.length, 3);
   });

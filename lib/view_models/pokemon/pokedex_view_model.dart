@@ -1,15 +1,16 @@
 import 'package:caremixer_technical_assesment/models/pokemon/fetch_pokemon.dart';
 import 'package:caremixer_technical_assesment/models/pokemon/pokedex.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../models/pokemon/pokemon.dart';
+import '../../models/pokemon/pokemon.dart';
 
-class PokemonViewModel with ChangeNotifier
+class PokedexViewModel with ChangeNotifier
 {
   late final Pokedex? _pokedex;
   bool _fetchComplete = false;
+  Pokemon? _pokemonSelected;
 
-  PokemonViewModel()
+  PokedexViewModel()
   {
     _fetchPokedex();
   }
@@ -22,9 +23,22 @@ class PokemonViewModel with ChangeNotifier
 
   List<Pokemon>? get pokedex => _fetchComplete ? _pokedex?.pokedex : null;
   bool get fetchComplete => _fetchComplete;
+  Pokemon? get pokemonSelected => _pokemonSelected;
 
   set fetchComplete(complete) {
     _fetchComplete = complete;
+    notifyListeners();
+  }
+
+  void pokemonPressed(Pokemon pokemon)
+  {
+    _pokemonSelected = pokemon;
+    notifyListeners();
+  }
+
+  void returnToGrid()
+  {
+    _pokemonSelected = null;
     notifyListeners();
   }
 }

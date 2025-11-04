@@ -1,5 +1,5 @@
 import 'package:caremixer_technical_assesment/views/chatbot_view.dart';
-import 'package:caremixer_technical_assesment/views/pokemon_view.dart';
+import 'package:caremixer_technical_assesment/views/pokedex/pokedex_view.dart';
 import 'package:caremixer_technical_assesment/views/timeline/timeline_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
@@ -17,7 +17,7 @@ class ViewHolderViewModel with ChangeNotifier
         TimelineView()));
     _itemsInOrder.add(Tuple2(
         NavigationBarItem.pokemonView,
-        PokemonView()));
+        PokedexView()));
     _itemsInOrder.add(Tuple2(
         NavigationBarItem.chatbotView,
         ChatbotView()));
