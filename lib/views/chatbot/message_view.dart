@@ -2,14 +2,14 @@ import 'package:caremixer_technical_assesment/view_models/chatbot/message_view_m
 import 'package:caremixer_technical_assesment/views/colour_palette/colour_palette.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/chatbot/message.dart';
+
 class MessageView extends StatelessWidget {
   MessageView({
     super.key,
-    required message,
-    required timestamp,
-    required userSent,
+    required Message message
   }) {
-    _messageViewModel = MessageViewModel(message, timestamp, userSent);
+    _messageViewModel = MessageViewModel(message);
   }
 
   late final MessageViewModel _messageViewModel;
@@ -17,8 +17,8 @@ class MessageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AlignmentDirectional align = AlignmentDirectional.centerStart;
-    Color colour = ColourPalette.brownRed.asColor();
-    if (_messageViewModel.userSent) {
+    Color colour = ColourPalette.lightPink.asColor();
+    if (_messageViewModel.message.userSent) {
       align = AlignmentDirectional.centerEnd;
       colour = ColourPalette.green.asColor();
     }
@@ -43,12 +43,14 @@ class MessageView extends StatelessWidget {
                 ),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
+                    border: Border.all(color: colour),
+                    borderRadius: BorderRadius.circular(10),
                     color: colour,
                   ),
-                  child: Text(
-                    _messageViewModel.message,
+                  child: Padding(padding: EdgeInsetsGeometry.fromLTRB(3, 3, 3, 3), child:  Text(
+                    _messageViewModel.message.message,
                     style: TextStyle(fontSize: 20),
-                  ),
+                  ),),
                 ),
               ),
             ),

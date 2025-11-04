@@ -42,6 +42,7 @@ class ChatbotView extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: TextField(
                     controller: _chatbotViewModel.textFieldController,
+                    maxLines: 1,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Ask me anything!',
@@ -62,10 +63,10 @@ class ChatbotView extends StatelessWidget {
   Widget _getMessages()
   {
     return Column(
-      children: [
-        MessageView(message: "Hi", timestamp: DateTime(2025,11,04,05,5), userSent: true),
-        MessageView(message: "Hello User.", timestamp: DateTime(2025,11,04,05,6), userSent: false),
-      ],
+      children:
+        List.generate(_chatbotViewModel.numOfMessages, (index) {
+          return MessageView(message: _chatbotViewModel.getMessageAtIndex(index));
+        }),
     );
   }
 }
