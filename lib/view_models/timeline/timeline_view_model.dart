@@ -1,5 +1,5 @@
-import '../../model/timeline/timeline_datafile.dart';
-import '../../model/timeline/timeline_data_point.dart';
+import '../../models/timeline/timeline_datafile.dart';
+import '../../models/timeline/timeline_data_point.dart';
 
 class TimelineViewModel
 {

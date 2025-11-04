@@ -1,4 +1,4 @@
-import 'package:caremixer_technical_assesment/model/timeline/timeline_data_point.dart';
+import 'package:caremixer_technical_assesment/models/timeline/timeline_data_point.dart';
 
 import '../../view_models/timeline/timeline_item_types.dart';
 
