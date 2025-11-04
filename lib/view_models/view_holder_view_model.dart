@@ -1,4 +1,4 @@
-import 'package:caremixer_technical_assesment/views/chatbot_view.dart';
+import 'package:caremixer_technical_assesment/views/chatbot/chatbot_view.dart';
 import 'package:caremixer_technical_assesment/views/pokedex/pokedex_view.dart';
 import 'package:caremixer_technical_assesment/views/timeline/timeline_view.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +42,9 @@ class ViewHolderViewModel with ChangeNotifier
 
 /// Contains all the information for the nav bar items, except the view/viewmodel
 enum NavigationBarItem {
-  timelineView(0, Icon(Icons.home), "Timeline"),
-  pokemonView(1, Icon(Icons.home), "Pokemon"),
-  chatbotView(2, Icon(Icons.home), "Chatbot");
+  timelineView(0, Icon(Icons.timeline), "Timeline"),
+  pokemonView(1, Icon(Icons.catching_pokemon_sharp), "Pokemon"),
+  chatbotView(2, Icon(Icons.chat), "Chatbot");
 
   const NavigationBarItem(this.position, this.icon, this.label);
 
