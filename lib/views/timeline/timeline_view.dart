@@ -1,6 +1,6 @@
 import 'package:caremixer_technical_assesment/view_models/timeline/timeline_view_model.dart';
 import 'package:caremixer_technical_assesment/views/colour_palette/colour_palette.dart';
-import 'package:caremixer_technical_assesment/views/timeline/timeline_item.dart';
+import 'package:caremixer_technical_assesment/views/timeline/timeline_item_view.dart';
 import 'package:flutter/material.dart';
 
 class TimelineView extends StatelessWidget {
@@ -23,10 +23,10 @@ class TimelineView extends StatelessWidget {
   }
 
   // Converts the timeline data into timeline items
-  List<TimelineItem> _getTimelineItems()
+  List<TimelineItemView> _getTimelineItems()
   {
-    List<TimelineItem> timeLineItems = _timelineViewModel.getTimeline().map((data) =>
-        TimelineItem(
+    List<TimelineItemView> timeLineItems = _timelineViewModel.getTimeline().map((data) =>
+        TimelineItemView(
           timelineItemType: data.timelineItemTypes,
           timestamp: data.timestamp,
           messageInsert: data.messageInsert ?? "",
@@ -34,7 +34,7 @@ class TimelineView extends StatelessWidget {
     ).toList();
     timeLineItems.removeLast();
     timeLineItems.add(
-        TimelineItem(
+        TimelineItemView(
           timelineItemType: _timelineViewModel.getTimeline().last.timelineItemTypes,
           timestamp: _timelineViewModel.getTimeline().last.timestamp,
           messageInsert: _timelineViewModel.getTimeline().last.messageInsert ?? "",

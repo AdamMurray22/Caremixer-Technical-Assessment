@@ -1,32 +1,25 @@
+import 'package:caremixer_technical_assesment/view_models/timeline/timeline_item_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../view_models/timeline/timeline_item_types.dart';
 
-class TimelineItem extends StatelessWidget {
-  TimelineItem({
+class TimelineItemView extends StatelessWidget {
+  TimelineItemView({
     super.key,
-    required this.timelineItemType,
-    this.last = false,
-    this.messageInsert = "",
-    required this.timestamp,
+    required timelineItemType,
+    last = false,
+    messageInsert = "",
+    required timestamp,
   }) {
-    _icon = timelineItemType.icon;
-    _title = timelineItemType.title;
-    _message = timelineItemType.messageTemplate.replaceAll("%%", messageInsert);
+    _itemViewModel = TimelineItemViewModel(timelineItemType, last, messageInsert, timestamp);
   }
 
-  final TimelineItemTypes timelineItemType;
-  late final IconData _icon;
-  late final String _title;
-  late final String _message;
-  final bool last;
-  final String messageInsert;
-  final DateTime timestamp;
+  late final TimelineItemViewModel _itemViewModel;
 
   @override
   Widget build(BuildContext context) {
     Widget? line;
-    if (!last) {
+    if (!_itemViewModel.last) {
       line = const VerticalDivider(
         thickness: 1,
         indent: 0,
@@ -34,15 +27,7 @@ class TimelineItem extends StatelessWidget {
         color: Colors.grey,
       );
     }
-    String time = "";
-    DateTime referenceTime = DateTime(2025, 11, 03);
-    if (timestamp.isAfter(referenceTime)) {
-      time =
-          "${timestamp.hour.toString().padLeft(2, "0")}:${timestamp.minute.toString().padLeft(2, "0")}";
-    } else {
-      time =
-          "${timestamp.year}/${timestamp.month.toString().padLeft(2, "0")}/${timestamp.day.toString().padLeft(2, "0")}";
-    }
+    String time = _itemViewModel.displayTime;
     return Container(
       constraints: BoxConstraints(minWidth: MediaQuery.sizeOf(context).width),
       child: Padding(
@@ -53,7 +38,7 @@ class TimelineItem extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Column(
                 children: [
-                  Icon(_icon, size: 30, color: timelineItemType.colour.asColor()),
+                  Icon(_itemViewModel.icon, size: 30, color: _itemViewModel.timelineItemType.colour.asColor()),
                   SizedBox(height: 60, child: line),
                 ],
               ),
@@ -73,7 +58,7 @@ class TimelineItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            _title,
+                            _itemViewModel.title,
                             style: TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
@@ -87,7 +72,7 @@ class TimelineItem extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: SizedBox(
                         width: double.infinity,
-                        child: Text(_message, style: TextStyle(fontSize: 20)),
+                        child: Text(_itemViewModel.message, style: TextStyle(fontSize: 20)),
                       ),
                     ),
                   ],

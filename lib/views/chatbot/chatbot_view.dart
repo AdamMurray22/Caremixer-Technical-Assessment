@@ -28,7 +28,6 @@ class ChatbotView extends StatelessWidget {
             child: Column(
               children: [
                 _getMessages(),
-                //Expanded(child: Container()),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Divider(
