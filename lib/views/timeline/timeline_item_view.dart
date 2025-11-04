@@ -1,7 +1,6 @@
 import 'package:caremixer_technical_assesment/view_models/timeline/timeline_item_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../view_models/timeline/timeline_item_types.dart';
 
 class TimelineItemView extends StatelessWidget {
   TimelineItemView({
