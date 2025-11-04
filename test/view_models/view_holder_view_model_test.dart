@@ -1,5 +1,5 @@
 import 'package:caremixer_technical_assesment/view_models/view_holder_view_model.dart';
-import 'package:caremixer_technical_assesment/views/chatbot_view.dart';
+import 'package:caremixer_technical_assesment/views/chatbot/chatbot_view.dart';
 import 'package:caremixer_technical_assesment/views/pokedex/pokedex_view.dart';
 import 'package:caremixer_technical_assesment/views/timeline/timeline_view.dart';
 import 'package:flutter/cupertino.dart';
