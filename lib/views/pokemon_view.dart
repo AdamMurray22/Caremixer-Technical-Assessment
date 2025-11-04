@@ -44,22 +44,31 @@ class PokemonView extends StatelessWidget {
         shrinkWrap: true,
         children: List.generate(_pokemonViewModel.pokedex!.length, (index) {
           Pokemon pokemon = _pokemonViewModel.pokedex![index];
-          return Padding(padding: EdgeInsetsGeometry.fromLTRB(10, 5, 10, 5),
-            child:
-            Stack(
+          return Padding(
+            padding: EdgeInsetsGeometry.fromLTRB(10, 5, 10, 5),
+            child: Stack(
               fit: StackFit.expand,
-            children: [
-              Center(child:
-              FadeInImage.assetNetwork(
-                fit: BoxFit.fitWidth,
-                placeholder: 'assets/gifs/loading.gif', // Before image load
-                image:
-                    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokedexEntry}.png', // After image load
-                imageErrorBuilder: (buildContext, object, stackTrace) { return Text("Something went wrong. Please try again later.");},
-              )),
-              Text(pokemon.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ],
-          ));
+              children: [
+                Center(
+                  child: FadeInImage.assetNetwork(
+                    fit: BoxFit.fitWidth,
+                    placeholder: 'assets/gifs/loading.gif', // Before image load
+                    image:
+                        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokedexEntry}.png', // After image load
+                    imageErrorBuilder: (buildContext, object, stackTrace) {
+                      return Text(
+                        "Something went wrong. Please try again later.",
+                      );
+                    },
+                  ),
+                ),
+                Text(
+                  pokemon.displayName,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          );
         }),
       );
       return pokemonGrid;
