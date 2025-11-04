@@ -49,12 +49,14 @@ class PokemonView extends StatelessWidget {
             Stack(
               fit: StackFit.expand,
             children: [
+              Center(child:
               FadeInImage.assetNetwork(
                 fit: BoxFit.fitWidth,
                 placeholder: 'assets/gifs/loading.gif', // Before image load
                 image:
                     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokedexEntry}.png', // After image load
-              ),
+                imageErrorBuilder: (buildContext, object, stackTrace) { return Text("Something went wrong. Please try again later.");},
+              )),
               Text(pokemon.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ],
           ));
