@@ -13,6 +13,10 @@ class ChatbotViewModel with ChangeNotifier
 
   void textSubmitted()
   {
+    if (_textFieldController.text == "")
+    {
+      return;
+    }
     _messages.addMessages(Message(_textFieldController.text, DateTime.now(), true));
     _textFieldController.clear();
     notifyListeners();

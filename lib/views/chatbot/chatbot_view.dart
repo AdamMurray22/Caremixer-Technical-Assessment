@@ -28,7 +28,7 @@ class ChatbotView extends StatelessWidget {
             child: Column(
               children: [
                 _getMessages(),
-                Expanded(child: Container()),
+                //Expanded(child: Container()),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Divider(
@@ -46,6 +46,10 @@ class ChatbotView extends StatelessWidget {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Ask me anything!',
+                      suffixIcon: IconButton(
+                        onPressed: _chatbotViewModel.textSubmitted,
+                        icon: Icon(Icons.arrow_back),
+                      )
                     ),
                     onSubmitted: (value) {
                       _chatbotViewModel.textSubmitted();
@@ -60,13 +64,14 @@ class ChatbotView extends StatelessWidget {
     );
   }
 
-  Widget _getMessages()
-  {
-    return Column(
-      children:
-        List.generate(_chatbotViewModel.numOfMessages, (index) {
-          return MessageView(message: _chatbotViewModel.getMessageAtIndex(index));
+  Widget _getMessages() {
+    return Expanded(child: ListView(
+      shrinkWrap: true,
+        children: List.generate(_chatbotViewModel.numOfMessages, (index) {
+          return MessageView(
+            message: _chatbotViewModel.getMessageAtIndex(index),
+          );
         }),
-    );
+    ));
   }
 }
